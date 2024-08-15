@@ -16,19 +16,19 @@ export default function SearchBar() {
 
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.delete("q");
-    searchParams.append("q", value);
+    if (value) searchParams.append("q", value);
 
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState({}, "", newUrl);
   };
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-1">
+    <form onSubmit={handleSubmit} className="flex max-w-lg items-center gap-2">
       <Input
         value={value}
         name="searchTerm"
         onChange={(evt) => setValue(evt.target.value)}
       />
-      <Button size={"icon"}>
+      <Button size={"icon"} variant={"secondary"}>
         <SearchIcon />
       </Button>
     </form>
