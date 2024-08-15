@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Planet Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A basic planet search app that shows list of planets in our solar system that can be filtered and searched through and preferences are persisted in URL state
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tech Stack](#tech-stack)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Step-by-step instructions on how to install and set up the project locally. For example:
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone the repository: `git@github.com:DayakarH/planet-search-twopointone-assignment.git`
+2. Navigate to the project directory: `cd planet-search-twopointone-assignment`
+3. Install dependencies: `npm i`
+4. Create a `.env` file in the root directory and copy the contents of `.env.example` file into the `.env` file
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Usage
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- To ensure port 3000 is available, run `npx kill-port 3000`
+- To mock the server, run `npx json-server src/lib/data.json`
+- In another terminal, navigate to this same directory and run below command to the start the local development server
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```bash
+   npm run dev
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- After the local development is up and running, open [this](http://localhost:5173/) link to view the instance in your browser.
+- As soon as the app starts, all 8 planets show up in a grid layout. If any filters are selected or a search term is entered and submitted, filtered results will show up.
+
+## Tech Stack
+
+- ReactJS - UI Library
+- Redux-Toolkit - For global synchronous state management
+- TypeScript - For readability, maintainability, scalability and overall a better DX
+- shadcn - Component Library
+- Tailwind CSS - For utility styling
