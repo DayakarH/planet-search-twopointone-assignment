@@ -53,7 +53,7 @@ module.exports = {
         },
         card: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "hsl(var(--foreground))",
         },
       },
       borderRadius: {
