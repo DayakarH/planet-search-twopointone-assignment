@@ -13,18 +13,18 @@ export default function PlanetsGrid({
   planets: Array<Planet> | undefined;
 }) {
   return (
-    <ul className="grid gap-4 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+    <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
       {planets?.map(({ name, id, description }) => (
         <li key={id}>
           <Card className="h-full">
             <CardHeader>
-              <CardTitle>{name}</CardTitle>
+              <CardTitle className="font-display">{name}</CardTitle>
             </CardHeader>
             <CardContent>
               <img
                 src={`/${name}.webp`}
                 alt={name}
-                className="aspect-video rounded-sm object-cover"
+                className="aspect-square rounded-md object-cover"
               />
             </CardContent>
             <CardFooter>
