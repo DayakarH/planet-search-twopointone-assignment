@@ -1,4 +1,5 @@
 import { Filters, type FilterOption, type Planet } from "@/lib/types";
+import { capitalizeFirstLetter } from "@/lib/utils";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const planetsAPI = createApi({
@@ -8,7 +9,8 @@ export const planetsAPI = createApi({
     searchPlanets: builder.query<Array<Planet>, Filters>({
       query: ({ searchText, filters }) => {
         const params = new URLSearchParams();
-        if (searchText) params.append("q", searchText);
+        if (searchText)
+          params.append("name", capitalizeFirstLetter(searchText));
         Object.entries(filters).forEach(([key, values]) => {
           values.forEach((value) => params.append(key, value));
         });
