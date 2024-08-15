@@ -28,7 +28,7 @@ export default function SearchBar() {
         name="searchTerm"
         onChange={(evt) => setValue(evt.target.value)}
       />
-      <Button size={"icon"} variant={"secondary"}>
+      <Button size={"icon"} variant={"default"}>
         <SearchIcon />
       </Button>
     </form>
