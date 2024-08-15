@@ -14,7 +14,7 @@ export default function Filters() {
   const { data: shapeOptions } = useGetShapeOptionsQuery();
   const { data: sizeOptions } = useGetSizeOptionsQuery();
   return (
-    <aside className="hidden space-y-4 border-r py-4 shadow-sm sm:block">
+    <aside className="hidden space-y-4 border-r py-6 shadow-sm sm:block">
       <FilterSection filterOptions={colorOptions} label="color" />
       <FilterSection filterOptions={sizeOptions} label="size" />
       <FilterSection filterOptions={shapeOptions} label="shape" />
