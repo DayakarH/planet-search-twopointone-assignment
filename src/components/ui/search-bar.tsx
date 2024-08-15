@@ -27,6 +27,7 @@ export default function SearchBar() {
         value={value}
         name="searchTerm"
         onChange={(evt) => setValue(evt.target.value)}
+        className="bg-white"
       />
       <Button size={"icon"} variant={"default"}>
         <SearchIcon />
