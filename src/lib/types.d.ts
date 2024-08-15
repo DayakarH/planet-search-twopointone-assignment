@@ -4,6 +4,7 @@ export type Planet = {
   shape: string;
   color: string;
   size: string;
+  description: string;
 };
 export type Filters = {
   searchText: string;

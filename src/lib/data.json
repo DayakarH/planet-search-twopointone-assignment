@@ -5,56 +5,72 @@
       "name": "Mercury",
       "shape": "4aaaf39b-eccb-46d6-b4be-2e72a911c724",
       "color": "90f28316-7f0d-4cf2-828e-f0dbbcc110b9",
-      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3"
-    },{
+      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3",
+      "description": "Mercury is the smallest planet in our solar system, and the nearest to the Sun."
+    },
+    {
       "id": "813d3b99-dd05-405f-aed9-692a95fef73c",
       "name": "Venus",
       "shape": "f77621c4-5ee4-4c0c-9db3-d791a87b85e2",
       "color": "7526a44b-32d3-4644-b28d-8eb57e5fada6",
-      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3"
-    },{
+      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3",
+      "description": "Venus is the second planet from the Sun, and Earth's closest planetary neighbor."
+    },
+    {
       "id": "73b6fe40-8847-455f-82e8-f69fe2855ff1",
       "name": "Earth",
       "shape": "4aaaf39b-eccb-46d6-b4be-2e72a911c724",
       "color": "fe228419-f7df-49d2-a4cd-43e625b26075",
-      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3"
-    },{
+      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3",
+      "description": "Earth – our home planet – is the third planet from the Sun, and the fifth largest planet."
+    },
+    {
       "id": "67bfd4d2-cf82-4db9-9152-b65ef69a11e2",
       "name": "Mars",
       "shape": "f77621c4-5ee4-4c0c-9db3-d791a87b85e2",
       "color": "90f28316-7f0d-4cf2-828e-f0dbbcc110b9",
-      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3"
-    },{
+      "size": "3cc158c7-eff6-4152-afa3-50d9487584c3",
+      "description": "Mars – the fourth planet from the Sun – is a dusty, cold, desert world with a very thin atmosphere."
+    },
+    {
       "id": "2db3e11b-6dac-4340-9ee8-104906087a30",
-      "name": "Jupitor",
+      "name": "Jupiter",
       "shape": "4aaaf39b-eccb-46d6-b4be-2e72a911c724",
       "color": "90f28316-7f0d-4cf2-828e-f0dbbcc110b9",
-      "size": "65f33b82-48dc-4265-88cb-f4f467e5acba"
-    },{
+      "size": "65f33b82-48dc-4265-88cb-f4f467e5acba",
+      "description": "Jupiter is the largest planet in our solar system – if it were a hollow shell, 1,000 Earths could fit inside."
+    },
+    {
       "id": "bb0de079-21f6-4dc5-8df0-8fadd038c3ef",
       "name": "Saturn",
       "shape": "f77621c4-5ee4-4c0c-9db3-d791a87b85e2",
       "color": "fe228419-f7df-49d2-a4cd-43e625b26075",
-      "size": "65f33b82-48dc-4265-88cb-f4f467e5acba"
-    },{
+      "size": "65f33b82-48dc-4265-88cb-f4f467e5acba",
+      "description": "Saturn is the sixth planet from the Sun, the second-largest planet in our solar system."
+    },
+    {
       "id": "2940509b-251b-4bc9-a974-91130dbec835",
       "name": "Uranus",
       "shape": "4aaaf39b-eccb-46d6-b4be-2e72a911c724",
       "color": "fe228419-f7df-49d2-a4cd-43e625b26075",
-      "size": "65f33b82-48dc-4265-88cb-f4f467e5acba"
-    },{
+      "size": "65f33b82-48dc-4265-88cb-f4f467e5acba",
+      "description": "The seventh planet from the Sun, Uranus has the third largest diameter of planets in our solar system."
+    },
+    {
       "id": "b35955bd-8dcd-4316-aec4-ae9e065f7d73",
       "name": "Neptune",
       "shape": "f77621c4-5ee4-4c0c-9db3-d791a87b85e2",
       "color": "fe228419-f7df-49d2-a4cd-43e625b26075",
-      "size": "96d37388-6ca9-4aba-bc2a-dafeb082fbd9"
+      "size": "96d37388-6ca9-4aba-bc2a-dafeb082fbd9",
+      "description": "Neptune is the eighth and most distant planet in our solar system."
     }
   ],
   "shapes": [
     {
       "id": "4aaaf39b-eccb-46d6-b4be-2e72a911c724",
       "name": "Round"
-    },{
+    },
+    {
       "id": "f77621c4-5ee4-4c0c-9db3-d791a87b85e2",
       "name": "Oval"
     }
@@ -63,10 +79,12 @@
     {
       "id": "90f28316-7f0d-4cf2-828e-f0dbbcc110b9",
       "name": "Red"
-    },{
+    },
+    {
       "id": "7526a44b-32d3-4644-b28d-8eb57e5fada6",
       "name": "Green"
-    },{
+    },
+    {
       "id": "fe228419-f7df-49d2-a4cd-43e625b26075",
       "name": "Blue"
     }
@@ -75,10 +93,12 @@
     {
       "id": "3cc158c7-eff6-4152-afa3-50d9487584c3",
       "name": "Small"
-    },{
+    },
+    {
       "id": "96d37388-6ca9-4aba-bc2a-dafeb082fbd9",
       "name": "Medium"
-    },{
+    },
+    {
       "id": "65f33b82-48dc-4265-88cb-f4f467e5acba",
       "name": "Large"
     }
