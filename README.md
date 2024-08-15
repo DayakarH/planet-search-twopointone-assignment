@@ -12,16 +12,31 @@ A basic planet search app that shows list of planets in our solar system that ca
 
 Step-by-step instructions on how to install and set up the project locally. For example:
 
-1. Clone the repository: `git@github.com:DayakarH/planet-search-twopointone-assignment.git`
-2. Navigate to the project directory: `cd planet-search-twopointone-assignment`
-3. Install dependencies: `npm i`
+1. Clone the repository:
+```bash
+   git@github.com:DayakarH/planet-search-twopointone-assignment.git
+```
+2. Navigate to the project directory:
+ ```bash
+  cd planet-search-twopointone-assignment
+  ```
+3. Install dependencies:
+```bash
+  npm i
+  ```
 4. Create a `.env` file in the root directory and copy the contents of `.env.example` file into the `.env` file
 
 ## Usage
 
-- To ensure port 3000 is available, run `npx kill-port 3000`
-- To mock the server, run `npx json-server src/lib/data.json`
-- In another terminal, navigate to this same directory and run below command to the start the local development server
+- To ensure port 3000 is available, run
+  ```bash
+  npx kill-port 3000
+  ```
+- To mock the server, run
+  ```bash
+  npx json-server src/lib/data.json
+  ```
+ - In another terminal, navigate to this same directory and run below command to the start the local development server
 
    ```bash
    npm run dev
