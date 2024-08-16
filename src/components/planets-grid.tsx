@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { Skeleton } from "./ui/skeleton";
 
 export default function PlanetsGrid() {
   const { searchText, filters, anyFilterSelected } = useAppSelector(
@@ -14,6 +15,7 @@ export default function PlanetsGrid() {
   );
   const {
     data: planets,
+    isLoading,
     error,
     isSuccess,
   } = useSearchPlanetsQuery({
@@ -46,16 +48,19 @@ export default function PlanetsGrid() {
   }
   return (
     <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+      {isLoading
+        ? new Array(3).fill(0).map((_, idx) => <LoadingSkeleton key={idx} />)
+        : null}
       {isSuccess &&
         planets?.map(({ name, id, description }, idx) => (
           <li key={id}>
             <Card className="h-full">
-              <CardHeader className="p-4 pb-2">
+              <CardHeader>
                 <CardTitle className="font-display tracking-wide">
                   {name}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-4 pt-0">
+              <CardContent>
                 <img
                   src={`/${name}.webp`}
                   alt={name}
@@ -64,12 +69,32 @@ export default function PlanetsGrid() {
                   loading={idx > 2 ? "lazy" : "eager"}
                 />
               </CardContent>
-              <CardFooter className="p-4 pt-0">
+              <CardFooter>
                 <p>{description}</p>
               </CardFooter>
             </Card>
           </li>
         ))}
     </ul>
+  );
+}
+
+function LoadingSkeleton() {
+  return (
+    <>
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            <Skeleton className="h-6 w-full" />
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Skeleton className="aspect-square" />
+        </CardContent>
+        <CardFooter>
+          <Skeleton className="h-24 w-full" />
+        </CardFooter>
+      </Card>
+    </>
   );
 }
