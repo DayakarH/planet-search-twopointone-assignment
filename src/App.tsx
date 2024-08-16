@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="container grid md:grid-cols-[150px,1fr]">
+      <main className="container grid md:grid-cols-[180px,1fr]">
         <DesktopFilters />
         <div className="p-6 max-md:px-0">
           <div className="mb-4 flex justify-end gap-2">
