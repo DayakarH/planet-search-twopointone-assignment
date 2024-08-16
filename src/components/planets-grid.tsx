@@ -47,22 +47,24 @@ export default function PlanetsGrid() {
   return (
     <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
       {isSuccess &&
-        planets?.map(({ name, id, description }) => (
+        planets?.map(({ name, id, description }, idx) => (
           <li key={id}>
             <Card className="h-full">
-              <CardHeader>
+              <CardHeader className="p-4 pb-2">
                 <CardTitle className="font-display tracking-wide">
                   {name}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 pt-0">
                 <img
                   src={`/${name}.webp`}
                   alt={name}
-                  className="aspect-square rounded-md object-cover"
+                  // width={150}
+                  className="aspect-square w-full rounded-md object-cover"
+                  loading={idx > 2 ? "lazy" : "eager"}
                 />
               </CardContent>
-              <CardFooter>
+              <CardFooter className="p-4 pt-0">
                 <p>{description}</p>
               </CardFooter>
             </Card>
