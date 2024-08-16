@@ -19,7 +19,6 @@ export default function useUpdateSearchAndFilters() {
       searchParams.delete("q");
       if (value) {
         searchParams.append("q", value);
-        dispatch(setAnyFiltersSelected(true));
       }
 
       const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
