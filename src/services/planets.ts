@@ -1,4 +1,8 @@
-import { Filters, type FilterOption, type Planet } from "@/lib/types";
+import {
+  type FilterOption,
+  type Planet,
+  type SearchAndFilters,
+} from "@/lib/types";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -6,7 +10,7 @@ export const planetsAPI = createApi({
   reducerPath: "planetsAPI",
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder) => ({
-    searchPlanets: builder.query<Array<Planet>, Filters>({
+    searchPlanets: builder.query<Array<Planet>, SearchAndFilters>({
       query: ({ searchText, filters }) => {
         const params = new URLSearchParams();
         if (searchText)
