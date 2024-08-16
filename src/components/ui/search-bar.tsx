@@ -27,8 +27,10 @@ export default function SearchBar() {
       <Input
         value={value}
         name="searchTerm"
+        type="search"
         onChange={(evt) => setValue(evt.target.value)}
         className="bg-white"
+        placeholder='"Earth"'
       />
       <Button size={"icon"} variant={"default"}>
         <SearchIcon />
