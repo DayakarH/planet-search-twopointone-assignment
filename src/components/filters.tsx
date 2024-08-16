@@ -62,6 +62,7 @@ export function MobileFilters() {
         <Button
           className="flex items-center gap-1 md:hidden"
           variant={"secondary"}
+          size={"sm"}
         >
           <ListFilter />
           <span>Filters</span>
