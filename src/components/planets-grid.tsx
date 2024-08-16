@@ -13,12 +13,12 @@ export default function PlanetsGrid({
   planets: Array<Planet> | undefined;
 }) {
   return (
-    <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+    <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
       {planets?.map(({ name, id, description }) => (
         <li key={id}>
           <Card className="h-full">
             <CardHeader>
-              <CardTitle className="font-display">{name}</CardTitle>
+              <CardTitle className="font-display tracking-wide">{name}</CardTitle>
             </CardHeader>
             <CardContent>
               <img
