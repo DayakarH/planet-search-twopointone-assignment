@@ -6,15 +6,26 @@ import {
   useGetSizeOptionsQuery,
 } from "@/services/planets";
 import { setFilters } from "@/store/search-and-filters-slice";
+import { ListFilter } from "lucide-react";
+import { useState } from "react";
+import { Button } from "./ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
-export default function Filters() {
+export function DesktopFilters() {
   const { data: colorOptions } = useGetColorOptionsQuery();
   const { data: shapeOptions } = useGetShapeOptionsQuery();
   const { data: sizeOptions } = useGetSizeOptionsQuery();
   return (
-    <aside className="hidden space-y-4 border-r py-6 shadow-sm sm:block">
+    <aside className="hidden space-y-4 border-r py-6 shadow-sm md:block">
       <FilterSection filterOptions={colorOptions} label="color" />
       <FilterSection filterOptions={sizeOptions} label="size" />
       <FilterSection filterOptions={shapeOptions} label="shape" />
@@ -22,6 +33,40 @@ export default function Filters() {
   );
 }
 
+export function MobileFilters() {
+  const { data: colorOptions } = useGetColorOptionsQuery();
+  const { data: shapeOptions } = useGetShapeOptionsQuery();
+  const { data: sizeOptions } = useGetSizeOptionsQuery();
+  const [open, setOpen] = useState<boolean>(false);
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button
+          className="flex items-center gap-1 md:hidden"
+          variant={"secondary"}
+        >
+          <ListFilter />
+          <span>Filters</span>
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-start">Filters</DialogTitle>
+        </DialogHeader>
+        <div className="max-h-[50dvh] space-y-4 overflow-y-auto">
+          <FilterSection filterOptions={colorOptions} label="color" />
+          <FilterSection filterOptions={sizeOptions} label="size" />
+          <FilterSection filterOptions={shapeOptions} label="shape" />
+        </div>
+        <DialogFooter className="flex flex-row items-center justify-end">
+          <Button size={"lg"} onClick={() => setOpen(false)}>
+            Apply
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
 function FilterSection({
   filterOptions,
   label,

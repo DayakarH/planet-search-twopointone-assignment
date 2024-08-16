@@ -1,4 +1,4 @@
-import Filters from "@/components/filters";
+import { DesktopFilters, MobileFilters } from "@/components/filters";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { useAppSelector } from "@/hooks/redux-hooks";
@@ -14,11 +14,12 @@ function App() {
   return (
     <>
       <Header />
-      <main className="container grid sm:grid-cols-[150px,1fr]">
-        <Filters />
-        <div className="p-6 max-sm:px-0">
-          <div className="mb-4 flex justify-end">
+      <main className="container grid md:grid-cols-[150px,1fr]">
+        <DesktopFilters />
+        <div className="p-6 max-md:px-0">
+          <div className="mb-4 flex justify-end gap-2">
             <SearchBar />
+            <MobileFilters />
           </div>
           <PlanetsGrid planets={planets} />
         </div>
