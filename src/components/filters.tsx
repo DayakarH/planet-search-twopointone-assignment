@@ -125,7 +125,7 @@ function Filter({
         id={filter.id}
         checked={isChecked}
         onChange={handleChange}
-        className="h-4 w-4"
+        className="h-4 w-4 cursor-pointer"
       />
       <Label htmlFor={filter.id} className="font-normal">
         {filter.name}
