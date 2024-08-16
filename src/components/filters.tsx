@@ -1,12 +1,16 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import useUpdateSearchAndFilters from "@/hooks/use-update-search-and-filters";
 import type { FilterCategories, FilterOption } from "@/lib/types";
 import {
   useGetColorOptionsQuery,
   useGetShapeOptionsQuery,
   useGetSizeOptionsQuery,
 } from "@/services/planets";
-import { setFilters } from "@/store/search-and-filters-slice";
-import { ListFilter } from "lucide-react";
+import {
+  resetFilters,
+  setAnyFiltersSelected,
+} from "@/store/search-and-filters-slice";
+import { FilterX, ListFilter } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import {
@@ -24,8 +28,19 @@ export function DesktopFilters() {
   const { data: colorOptions } = useGetColorOptionsQuery();
   const { data: shapeOptions } = useGetShapeOptionsQuery();
   const { data: sizeOptions } = useGetSizeOptionsQuery();
+  const hasSelectedFilters = useAppSelector(
+    (state) => state.searchAndFiltersSlice.anyFilterSelected,
+  );
   return (
-    <aside className="hidden space-y-4 border-r py-6 shadow-sm md:block">
+    <aside className="hidden space-y-4 border-r py-6 pe-6 shadow-sm md:block">
+      <div className="flex items-center justify-between">
+        <h5 className="text-lg font-semibold">Filters</h5>
+        {hasSelectedFilters ? (
+          <div className="text-end">
+            <ResetFilters />
+          </div>
+        ) : null}
+      </div>
       <FilterSection filterOptions={colorOptions} label="color" />
       <FilterSection filterOptions={sizeOptions} label="size" />
       <FilterSection filterOptions={shapeOptions} label="shape" />
@@ -37,6 +52,9 @@ export function MobileFilters() {
   const { data: colorOptions } = useGetColorOptionsQuery();
   const { data: shapeOptions } = useGetShapeOptionsQuery();
   const { data: sizeOptions } = useGetSizeOptionsQuery();
+  const hasSelectedFilters = useAppSelector(
+    (state) => state.searchAndFiltersSlice.anyFilterSelected,
+  );
   const [open, setOpen] = useState<boolean>(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -58,10 +76,15 @@ export function MobileFilters() {
           <FilterSection filterOptions={sizeOptions} label="size" />
           <FilterSection filterOptions={shapeOptions} label="shape" />
         </div>
-        <DialogFooter className="flex flex-row items-center justify-end">
+        <DialogFooter className="flex flex-row-reverse items-center justify-between">
           <Button size={"lg"} onClick={() => setOpen(false)}>
             Apply
           </Button>
+          {hasSelectedFilters ? (
+            <div className="text-end">
+              <ResetFilters />
+            </div>
+          ) : null}
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -95,27 +118,13 @@ function Filter({
   filter: FilterOption;
   type: FilterCategories;
 }) {
-  const dispatch = useAppDispatch();
-  const { filters } = useAppSelector((state) => state.searchAndFiltersSlice);
+  const filters = useAppSelector((state) => state.searchAndFiltersSlice.filters);
+  const { updateFilters } = useUpdateSearchAndFilters();
 
   const isChecked = filters[type].includes(filter.id);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newFilters = {
-      ...filters,
-      [type]: event.target.checked
-        ? [...filters[type], filter.id]
-        : filters[type].filter((id) => id !== filter.id),
-    };
-
-    dispatch(setFilters(newFilters));
-
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.delete(type);
-    newFilters[type].forEach((id) => searchParams.append(type, id));
-
-    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-    window.history.pushState({}, "", newUrl);
+    updateFilters(type, filter.id, event.target.checked);
   };
 
   return (
@@ -131,5 +140,24 @@ function Filter({
         {filter.name}
       </Label>
     </div>
+  );
+}
+
+function ResetFilters() {
+  const dispatch = useAppDispatch();
+  const handleClick = () => {
+    dispatch(setAnyFiltersSelected(false));
+    dispatch(resetFilters());
+  };
+  return (
+    <Button
+      variant={"secondary"}
+      className="flex items-center gap-1"
+      onClick={handleClick}
+      size={"sm"}
+    >
+      <FilterX width={14} height={14} />
+      <span>Reset</span>
+    </Button>
   );
 }

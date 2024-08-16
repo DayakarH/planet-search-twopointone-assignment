@@ -7,12 +7,14 @@ export type Planet = {
   description: string;
 };
 export type Filters = {
+  color: Array<string>;
+  shape: Array<string>;
+  size: Array<string>;
+};
+
+export type SearchAndFilters = {
   searchText: string;
-  filters: {
-    color: Array<string>;
-    shape: Array<string>;
-    size: Array<string>;
-  };
+  filters: Filters;
 };
 
 export type FilterOption = {
@@ -20,4 +22,4 @@ export type FilterOption = {
   name: string;
 };
 
-export type FilterCategories = keyof Filters["filters"];
+export type FilterCategories = keyof Filters;
